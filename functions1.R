@@ -20,12 +20,12 @@ ReadReviews <- function(path){
   if(length(Html.part)!=0){
     dat.html <- lapply(Html.part, DecipreHtml)
     data.html <- data.table(Reduce(rbind, dat.html))
+    data.return <- rbind(data.text,data.html)
+  }else{
+    data.return <- data.text
   }
   
-  # fileConn<-file("outputHTML.txt")
-  # writeLines(Html.part, fileConn)
-  # close(fileConn)
-  return(rbind(data.text,data.html))
+  return(data.return)
 }
 
 DecipreHtml <- function(html.item){
